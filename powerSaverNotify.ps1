@@ -1,4 +1,6 @@
-﻿$code = @"
+#The below code snippet is to extract extract icons from shell32.dll, imageres.dll, explorer.exe, etc...
+
+$code = @"
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -29,11 +31,13 @@ namespace System
 	}
 }
 "@
+#End Snippet
 
+#The below code generates the notifiaction with the icon
 Add-Type -TypeDefinition $code -ReferencedAssemblies System.Drawing
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 $form = New-Object System.Windows.Forms.NotifyIcon
-$form.Icon = [System.IconExtractor]::Extract("explorer.exe", 5, $true)
+$form.Icon = [System.IconExtractor]::Extract("explorer.exe", 5, $true) #invoke icon extractor
 $form.Visible = $true 
 $form.BalloonTipText = "Power plan changed to Power Saver"
 $form.ShowBalloonTip(1000)
