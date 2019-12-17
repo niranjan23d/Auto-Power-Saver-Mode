@@ -13,7 +13,7 @@
 # * -Minutes 10 ( = 10 Minutes)
 # * -Hours 10 ( = 10 Hours)
 
-$idle_timeout = New-TimeSpan -Minutes 10
+$idle_timeout = New-TimeSpan -Seconds 10
 
 # DO NOT CHANGE ANYTHING BELOW THIS LINE
 ##########################################################
@@ -83,7 +83,7 @@ do {
             }
             } 
         Catch 
-	{
+        {
             Write-Warning -Message "Unable to set power plan to Power Saver"
         }
 	# Setting $pwrSvr to 1 will prevent it from going into power saver mode every 5 seconds		
@@ -104,7 +104,7 @@ do {
                 $showNotif = 0;    #you're now notified. with this, the notification won't appear every 5 seconds as it checks the power state.
             }
         Catch 
-	{
+        {
             Write-Warning -Message "Unable to set power plan to High Performance"
         }
 	}
