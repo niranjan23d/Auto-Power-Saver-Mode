@@ -8,6 +8,11 @@ I use this because I usually leave my system ON through the night for alarms, an
 
 The approach is a bit janky, and by no means I am in experienced dev. I am just a coding enthusiast and wanted to create a solution on my own.
 
+There are three files:
+1. auto-power-plan-switcher.ps1 - Holds the main code to change the power plan and notify.
+2. powerSaverNotify.ps1 - Notifies you when you enter power saver.
+3. highPerfNotify.ps1 - Notifies you when you enter high performance mode.
+
 Based on these works:
 1. [Power Plan change using PowerShell](https://facility9.com/2015/07/controlling-the-windows-power-plan-with-powershell/)
 2. [Auto-lock after timeout](https://gist.github.com/wendelb/1c364bb1a36ca5916ca4)
