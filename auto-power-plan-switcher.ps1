@@ -1,4 +1,4 @@
-﻿#Author: Niranjan Dixit
+#Author: Niranjan Dixit
 #This script is based on the the code by wendelb here: https://gist.github.com/wendelb/1c364bb1a36ca5916ca4
 
 # use task scheduler and use this line below to execute at every logon session
@@ -52,7 +52,6 @@ namespace PInvoke.Win32 {
                 return lii.dwTime;
             }
         }
-
     }
 }
 '@
@@ -83,35 +82,32 @@ do {
                 $showNotif = 1;    #you're now notified. with this, the notification won't appear every 5 seconds as it checks the power state.
             }
             } 
-        Catch {
+        Catch 
+	{
             Write-Warning -Message "Unable to set power plan to Power Saver"
         }
-		# Setting $pwrSvr to 1 will prevent it from going into power saver mode every 5 seconds
-		$pwrSvr = 1;
-        
+	# Setting $pwrSvr to 1 will prevent it from going into power saver mode every 5 seconds		
+	$pwrSvr = 1;
 	}
 
 	# Your computer is idle for less than the allowed time -> in most cases this means it is in High performance mode and
 	# therefore ready to go into power savving mode again!
 	if ($idle_time -lt $idle_timeout) {
+	    $pwrSvr = 0; #Setting $pwrSvr to 0 will prevent it from going into high performance mode every 10 seconds
         Try {
-            $HighPerf = powercfg -l | %{if($_.contains("High Performance")) {$_.split()[3]}}
-            if ($CurrPlan -ne $HIghPerf) 
-            {
+            	$HighPerf = powercfg -l | %{if($_.contains("High Performance")) {$_.split()[3]}}
                 powercfg -setactive $HighPerf    #set the high performance plan
                 if($showNotif -eq 1)    #show notification ONLY if not notified.
                 {
-	                powershell "C:\Users\niran\APS\highPerfNotify.ps1"    ##use your own FULL path for "highPerfNotify.ps1"
+	        	powershell "C:\Users\niran\APS\highPerfNotify.ps1"    ##use your own FULL path for "highPerfNotify.ps1"
                 }
                 $showNotif = 0;    #you're now notified. with this, the notification won't appear every 5 seconds as it checks the power state.
-            } 
             }
-        Catch {
+        Catch 
+	{
             Write-Warning -Message "Unable to set power plan to High Performance"
         }
-        $pwrSvr = 0; #Setting $pwrSvr to 0 will prevent it from going into high performance mode every 5 seconds
 	}
-
 	# Save the environment. Don't use 100% of a single CPU just for idle checking :)
     Start-Sleep -Seconds 10
 }
