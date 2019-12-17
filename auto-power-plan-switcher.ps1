@@ -2,7 +2,7 @@
 #This script is based on the the code by wendelb here: https://gist.github.com/wendelb/1c364bb1a36ca5916ca4
 
 # use task scheduler and use this line below to execute at every logon session
-# 	powershell.exe -windowstyle hidden -executionpolicy Unrestricted P:\ATH\TO\auto-power-plan-swticher.ps1
+# 	powershell.exe -windowstyle hidden -executionpolicy Unrestricted P:\ATH\TO\auto-power-plan-switcher.ps1
 #
 # `-windowstyle hidden` will make your PowerShell disappear/run in background
 # `-executionpolicy Unrestricted` will enable this PowerShell process to allow non-signed scripts
