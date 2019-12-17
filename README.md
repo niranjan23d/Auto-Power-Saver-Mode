@@ -1,4 +1,4 @@
-# Auto-Power-Saver-Mode
+# Auto Power Saver Mode
 
 I created this script so that my PC goes into power saver performance mode, when idle. Run this script using task scheduler
 
