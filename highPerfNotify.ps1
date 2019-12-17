@@ -1,5 +1,9 @@
 #The below code snippet is to extract extract icons from shell32.dll, imageres.dll, explorer.exe, etc...
-
+#If you'd rather just have the notification icons that are inbuilt, just remove the "$code" snippet.
+#usage:
+	#$form.Icon = "P:\ATH\TO\someIcon.ico" <--- this is for the TASKBAR TRAY icon
+	#$form.BalloonTipIcon = "Info" <--- this is for the notification banner. You can use values like "Info" or "Warning" here.
+	
 $code = @"
 using System;
 using System.Drawing;
